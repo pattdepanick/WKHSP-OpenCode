@@ -2,4 +2,4 @@
 *.md
 !labs/**/*.md
 !README.md
-!WKSHP-OpenWork/*.ipynb
+!WKSHP-OpenCode/*.ipynb
