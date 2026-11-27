@@ -10,6 +10,12 @@ ENV NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ca-certificates.crt
 
 # --- System dependencies ---
 RUN apt-get update && apt-get install -y \
+    iputils-ping \
+    dnsutils \
+    net-tools \
+    ss \
+    psmisc \
+    procps \
     curl \
     wget \
     git \
