@@ -15,7 +15,7 @@ You are building a "Code Review Agent" that:
 ### 1. Set Up the Project to Review
 
 ```bash
-cd /root/labs/lab-03-agent-workflow
+cd $WODSTUDDIR/$NB_USER/opencodelab/labs/lab-03-agent-workflow
 ls sample-project/
 ```
 

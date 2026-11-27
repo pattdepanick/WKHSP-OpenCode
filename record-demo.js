@@ -339,13 +339,13 @@ async function recordLab2(page, frame) {
 
   // Part A - Create greeter directory
   console.log('  [step] Part A - Create greeter directory');
-  await sendPrompt(frame, 'Create a directory at /root/labs/.opencode/skills/greeter/');
+  await sendPrompt(frame, 'Create a directory at $WODSTUDDIR/$NB_USER/opencodelab/labs/.opencode/skills/greeter/');
   await waitForResponse(frame);
   await sleep(PAUSE_AFTER_RESP);
 
   // Part A - Create greeter skill
   console.log('  [step] Part A - Create greeter skill');
-  await sendPrompt(frame, `Create the file /root/labs/.opencode/skills/greeter/SKILL.md with this content:
+  await sendPrompt(frame, `Create the file $WODSTUDDIR/$NB_USER/opencodelab/labs/.opencode/skills/greeter/SKILL.md with this content:
 
 ---
 name: greeter
@@ -417,7 +417,7 @@ async function recordLab3(page, frame) {
 
   // Step 2: Create code-reviewer skill
   console.log('  [step] Create code-reviewer skill');
-  await sendPrompt(frame, `Create the directory /root/labs/.opencode/skills/code-reviewer/ and then create a SKILL.md file inside it with this content:
+  await sendPrompt(frame, `Create the directory $WODSTUDDIR/$NB_USER/opencodelab/labs/.opencode/skills/code-reviewer/ and then create a SKILL.md file inside it with this content:
 
 ---
 name: code-reviewer

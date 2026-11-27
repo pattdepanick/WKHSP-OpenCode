@@ -70,7 +70,7 @@ fi
 
 section "OpenCode Configuration"
 
-CONFIG_FILE="/root/.config/opencode/config.json"
+CONFIG_FILE="$WODSTUDDIR/$NB_USER/.config/opencode/config.json"
 if [ -f "$CONFIG_FILE" ]; then
     pass "OpenCode config exists"
     if jq -e '.provider.zen' "$CONFIG_FILE" > /dev/null 2>&1; then
@@ -105,7 +105,7 @@ else
     fail "SkillSpector CLI not found"
 fi
 
-if command -v skillspector >/dev/null 2>&1 && skillspector scan /root/labs/.opencode/skills --no-llm --format json >/tmp/skillspector-validation.json 2>/tmp/skillspector-validation.err; then
+if command -v skillspector >/dev/null 2>&1 && skillspector scan $WODSTUDDIR/$NB_USER/opencodelab/labs/.opencode/skills --no-llm --format json >/tmp/skillspector-validation.json 2>/tmp/skillspector-validation.err; then
     pass "SkillSpector static scan completed"
 else
     fail "SkillSpector static scan failed"
@@ -115,7 +115,7 @@ fi
 
 section "Lab Materials"
 
-LABS_DIR="/root/labs"
+LABS_DIR="$WODSTUDDIR/$NB_USER/opencodelab/labs"
 
 for lab in lab-01-getting-started lab-02-skills lab-03-agent-workflow; do
     if [ -f "${LABS_DIR}/${lab}/README.md" ]; then

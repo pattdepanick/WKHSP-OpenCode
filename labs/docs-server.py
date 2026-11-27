@@ -2,7 +2,7 @@
 """Minimal HTTP server: serves tutorial.html at / and lab docs at /docs/"""
 import http.server
 
-LABS_DIR = "/root/labs"
+LABS_DIR = "$WODSTUDDIR/$NB_USER/opencodelab/labs"
 PORT = 8080
 
 class Handler(http.server.SimpleHTTPRequestHandler):

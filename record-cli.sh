@@ -58,9 +58,9 @@ docker exec "$CONTAINER" bash -c '
 
 # Copy expect scripts into container
 echo "[*] Copying expect scripts..."
-docker cp expect/ "$CONTAINER":/root/expect/
-docker cp record-cli-inner.sh "$CONTAINER":/root/record-cli-inner.sh
-docker exec "$CONTAINER" bash -c 'chmod +x /root/record-cli-inner.sh /root/expect/*.exp'
+docker cp expect/ "$CONTAINER":$WODSTUDDIR/$NB_USER/opencodelab/expect/
+docker cp record-cli-inner.sh "$CONTAINER":$WODSTUDDIR/$NB_USER/opencodelab/record-cli-inner.sh
+docker exec "$CONTAINER" bash -c 'chmod +x $WODSTUDDIR/$NB_USER/opencodelab/record-cli-inner.sh /root/expect/*.exp'
 
 # Run the recording
 echo "[*] Starting asciinema recording..."
@@ -68,14 +68,14 @@ echo ""
 
 docker exec -it -e LAB_ONLY="${LAB_ONLY}" "$CONTAINER" \
   asciinema rec \
-    --command "bash /root/record-cli-inner.sh" \
+    --command "bash $WODSTUDDIR/$NB_USER/opencodelab/record-cli-inner.sh" \
     --title "HackShack OpenCode CLI Tutorial" \
     --cols 120 \
     --rows 35 \
-    "/root/recordings/session.cast"
+    "$WODSTUDDIR/$NB_USER/opencodelab/recordings/session.cast"
 
 # Copy recording out
-docker cp "$CONTAINER":/root/recordings/session.cast "$CAST_FILE"
+docker cp "$CONTAINER":$WODSTUDDIR/$NB_USER/opencodelab/recordings/session.cast "$CAST_FILE"
 
 echo ""
 echo "[OK] Recording saved: ${CAST_FILE}"

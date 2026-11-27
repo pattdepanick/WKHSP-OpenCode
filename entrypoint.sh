@@ -9,7 +9,7 @@ echo ""
 
 # Substitute environment variables in opencode.json (OpenCode doesn't resolve env vars in config)
 if [ -n "${GITHUB_TOKEN}" ]; then
-    sed -i "s|\${GITHUB_TOKEN}|${GITHUB_TOKEN}|g" $WODSTUDDIR/$NB_USER/labs/opencode.json
+    sed -i "s|\${GITHUB_TOKEN}|${GITHUB_TOKEN}|g" $WODSTUDDIR/$NB_USER/opencodelab/labs/opencode.json
     echo "[OK] GITHUB_TOKEN injected into opencode.json"
 else
     echo "[INFO] No GITHUB_TOKEN set -- using Zen free models only"
@@ -18,7 +18,7 @@ fi
 # Start tutorial docs server (rendered markdown viewer)
 DOCS_PORT="${HTTPPORT2}"
 echo "[*] Starting tutorial docs server on port ${DOCS_PORT}..."
-python3 $WODSTUDDIR/$NB_USER/labs/docs-server.py > /tmp/docs-server.log 2>&1 &
+python3 $WODSTUDDIR/$NB_USER/opencodelab/labs/docs-server.py > /tmp/docs-server.log 2>&1 &
 
 # Start OpenCode web UI
 OPENCODE_PORT="${HTTPPORT1}"

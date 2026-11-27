@@ -16,7 +16,7 @@ new OpenCode session to compute a real astronomical quantity (the Moon's phase).
 ### 1. Start a fresh session
 
 ```bash
-cd /root/labs
+cd $WODSTUDDIR/$NB_USER/opencodelab/labs
 opencode
 ```
 
@@ -87,7 +87,7 @@ Exit and restart OpenCode so it discovers the new skill:
 ```
 
 ```bash
-cd /root/labs
+cd $WODSTUDDIR/$NB_USER/opencodelab/labs
 opencode
 ```
 

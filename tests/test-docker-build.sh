@@ -70,8 +70,8 @@ fi
 
 # Test 5: OpenCode config for Zen free models
 echo "[5/6] Checking Zen model config..."
-if docker exec "$CONTAINER_NAME" test -f /root/.config/opencode/config.json; then
-    if docker exec "$CONTAINER_NAME" bash -c 'jq -e ".provider.zen" /root/.config/opencode/config.json' > /dev/null 2>&1; then
+if docker exec "$CONTAINER_NAME" test -f $WODSTUDDIR/$NB_USER/opencodelab/.config/opencode/config.json; then
+    if docker exec "$CONTAINER_NAME" bash -c 'jq -e ".provider.zen" $WODSTUDDIR/$NB_USER/opencodelab/.config/opencode/config.json' > /dev/null 2>&1; then
         echo "  [OK] Zen provider configured (free cloud models)"
     else
         echo "  [FAIL] Zen provider not in config"
@@ -84,7 +84,7 @@ fi
 echo "[6/6] Checking lab files..."
 LABS_OK=true
 for lab in lab-01-getting-started lab-02-skills lab-03-agent-workflow; do
-    if ! docker exec "$CONTAINER_NAME" test -f "/root/labs/${lab}/README.md"; then
+    if ! docker exec "$CONTAINER_NAME" test -f "$WODSTUDDIR/$NB_USER/opencodelab/labs/${lab}/README.md"; then
         echo "  [FAIL] Missing: ${lab}/README.md"
         LABS_OK=false
     fi

@@ -6,8 +6,8 @@
 
 set -euo pipefail
 
-LABS_DIR="/root/labs"
-EXPECT_DIR="/root/expect"
+LABS_DIR="$WODSTUDDIR/$NB_USER/opencodelab/labs"
+EXPECT_DIR="$WODSTUDDIR/$NB_USER/opencodelab/expect"
 RESPONSE_WAIT=90   # seconds to wait for AI response in TUI
 
 cd "$LABS_DIR"

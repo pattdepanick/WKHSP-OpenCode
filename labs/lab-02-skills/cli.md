@@ -33,10 +33,10 @@ From the docs above, keep these in mind when writing skills:
 
 ### 1. Create a Skill Directory
 
-Skills must live at the **project root** (`.opencode/skills/` under `/root/labs/`), not inside a lab subdirectory.
+Skills must live at the **project root** (`.opencode/skills/` under `$WODSTUDDIR/$NB_USER/opencodelab/labs/`), not inside a lab subdirectory.
 
 ```bash
-cd /root/labs
+cd $WODSTUDDIR/$NB_USER/opencodelab/labs
 mkdir -p .opencode/skills/greeter
 ```
 
@@ -69,7 +69,7 @@ EOF
 
 > **Frontmatter is required**: The `name` and `description` fields in the YAML block (`---`) are mandatory. Without `description`, OpenCode silently ignores the skill.
 >
-> **Why the project root?** OpenCode scans `.opencode/skills/` relative to the project root (`/root/labs/`). Skills placed inside lab subdirectories (e.g., `lab-02-skills/.opencode/`) are invisible to OpenCode.
+> **Why the project root?** OpenCode scans `.opencode/skills/` relative to the project root (`$WODSTUDDIR/$NB_USER/opencodelab/labs/`). Skills placed inside lab subdirectories (e.g., `lab-02-skills/.opencode/`) are invisible to OpenCode.
 
 ### 3. Test Your Skill
 
@@ -131,7 +131,7 @@ For example, with our greeter skill:
 ### 1. Launch OpenCode
 
 ```bash
-cd /root/labs
+cd $WODSTUDDIR/$NB_USER/opencodelab/labs
 opencode
 ```
 
