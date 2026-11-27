@@ -20,7 +20,7 @@ A skill is a markdown file (`SKILL.md`) with optional YAML frontmatter that inje
 ### 1. Create a Skill Directory
 
 ```bash
-cd /root/labs/lab-02-skills
+cd $WODSTUDDIR/$NB_USER/opencodelab/labs/lab-02-skills
 mkdir -p .opencode/skills/greeter
 ```
 
@@ -82,7 +82,7 @@ OpenCode has a built-in skill builder that generates skills from a description. 
 ### 1. Launch OpenCode
 
 ```bash
-cd /root/labs/lab-02-skills
+cd $WODSTUDDIR/$NB_USER/opencodelab/labs/lab-02-skills
 opencode
 ```
 

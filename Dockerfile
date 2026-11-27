@@ -38,30 +38,30 @@ ARG SKILLSPECTOR_REF=main
 RUN pip install --no-cache-dir "git+https://github.com/NVIDIA/SkillSpector.git@${SKILLSPECTOR_REF}"
 
 # --- Configure OpenCode ---
-RUN mkdir -p /root/labs/.opencode/skills && \
-    mkdir -p /root/.opencode/skills && \
-    mkdir -p /root/.config/opencode && \
-    mkdir -p /root/recordings
+RUN mkdir -p $WODSTUDDIR/$NB_USER/opencodelab/labs/.opencode/skills && \
+    mkdir -p $WODSTUDDIR/$NB_USER/opencodelab/.opencode/skills && \
+    mkdir -p $WODSTUDDIR/$NB_USER/opencodelab/.config/opencode && \
+    mkdir -p $WODSTUDDIR/$NB_USER/opencodelab/recordings
 
-COPY config/opencode.json /root/.config/opencode/config.json
-COPY config/INSTRUCTIONS.md /root/labs/INSTRUCTIONS.md
+COPY config/opencode.json $WODSTUDDIR/$NB_USER/opencodelab/.config/opencode/config.json
+COPY config/INSTRUCTIONS.md $WODSTUDDIR/$NB_USER/opencodelab/labs/INSTRUCTIONS.md
 
 # --- Copy tutorial materials and tests ---
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
-COPY labs/ /root/labs/
-COPY tests/ /root/tests/
-RUN chmod +x /root/tests/*.sh
+COPY labs/ $WODSTUDDIR/$NB_USER/opencodelab/labs/
+COPY tests/ $WODSTUDDIR/$NB_USER/opencodelab/tests/
+RUN chmod +x $WODSTUDDIR/$NB_USER/opencodelab/tests/*.sh
 
 # Initialize labs as a git repo so OpenCode recognizes it as a project
 RUN git config --global init.defaultBranch main && \
-    cd /root/labs && \
+    cd $WODSTUDDIR/$NB_USER/opencodelab/labs && \
     git config --global user.email "student@hackshack.local" && \
     git config --global user.name "HackShack Student" && \
     git init && git add -A && git commit -m "Initial lab content" --quiet
 
-WORKDIR /root/labs
+WORKDIR $WODSTUDDIR/$NB_USER/opencodelab/labs
 
 # OpenCode web UI
 EXPOSE 5178

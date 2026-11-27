@@ -24,10 +24,10 @@ A sample Python project with 3 files (app.py, utils.py, database.py) is pre-load
 
 ### 2. Create the Code Review Skill
 
-Ask OpenCode to create the skill directory and file. Skills must be created at the **project root** (`/root/labs/.opencode/skills/`) -- not inside a lab subdirectory -- so OpenCode discovers them at session start.
+Ask OpenCode to create the skill directory and file. Skills must be created at the **project root** (`$WODSTUDDIR/$NB_USER/opencodelab/labs/.opencode/skills/`) -- not inside a lab subdirectory -- so OpenCode discovers them at session start.
 
 ```
-Create the directory /root/labs/.opencode/skills/code-reviewer/ and then create a SKILL.md file inside it with this content:
+Create the directory $WODSTUDDIR/$NB_USER/opencodelab/labs/.opencode/skills/code-reviewer/ and then create a SKILL.md file inside it with this content:
 
 ---
 name: code-reviewer
@@ -61,7 +61,7 @@ You are a senior Python code reviewer. When activated:
 
 > **Important**: The `name` and `description` fields in the YAML frontmatter are mandatory. Without `description`, OpenCode will silently ignore the skill.
 >
-> **Why the project root?** OpenCode scans `.opencode/skills/` relative to the project root (`/root/labs/`). Skills placed inside lab subdirectories (e.g., `lab-03-agent-workflow/.opencode/`) are invisible to OpenCode.
+> **Why the project root?** OpenCode scans `.opencode/skills/` relative to the project root (`$WODSTUDDIR/$NB_USER/opencodelab/labs/`). Skills placed inside lab subdirectories (e.g., `lab-03-agent-workflow/.opencode/`) are invisible to OpenCode.
 
 ### 3. Run the Workflow
 

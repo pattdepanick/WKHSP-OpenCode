@@ -33,10 +33,10 @@ From the docs above, keep these in mind when writing skills:
 
 ### 1. Create a Skill Directory
 
-Skills must live at the **project root** (`.opencode/skills/` under `/root/labs/`), not inside a lab subdirectory. Ask OpenCode in the left panel:
+Skills must live at the **project root** (`.opencode/skills/` under `$WODSTUDDIR/$NB_USER/opencodelab/labs/`), not inside a lab subdirectory. Ask OpenCode in the left panel:
 
 ```
-Create a directory at /root/labs/.opencode/skills/greeter/
+Create a directory at $WODSTUDDIR/$NB_USER/opencodelab/labs/.opencode/skills/greeter/
 ```
 
 ### 2. Write Your Skill
@@ -44,7 +44,7 @@ Create a directory at /root/labs/.opencode/skills/greeter/
 Ask OpenCode to create the skill file:
 
 ```
-Create the file /root/labs/.opencode/skills/greeter/SKILL.md with this content:
+Create the file $WODSTUDDIR/$NB_USER/opencodelab/labs/.opencode/skills/greeter/SKILL.md with this content:
 
 ---
 name: greeter
@@ -68,7 +68,7 @@ Always be enthusiastic and encouraging!
 
 > **Frontmatter is required**: The `name` and `description` fields in the YAML block (`---`) are mandatory. Without `description`, OpenCode silently ignores the skill.
 >
-> **Why the project root?** OpenCode scans `.opencode/skills/` relative to the project root (`/root/labs/`). Skills placed inside lab subdirectories (e.g., `lab-02-skills/.opencode/`) are invisible to OpenCode.
+> **Why the project root?** OpenCode scans `.opencode/skills/` relative to the project root (`$WODSTUDDIR/$NB_USER/opencodelab/labs/`). Skills placed inside lab subdirectories (e.g., `lab-02-skills/.opencode/`) are invisible to OpenCode.
 
 ### 3. Test Your Skill
 

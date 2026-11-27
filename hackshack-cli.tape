@@ -35,7 +35,7 @@ Type "echo '=== Lab 1: Getting Started ==='"
 Enter
 Sleep 1s
 
-Type "cd /root/labs && ls -la"
+Type "cd $WODSTUDDIR/$NB_USER/opencodelab/labs && ls -la"
 Enter
 Sleep 2s
 

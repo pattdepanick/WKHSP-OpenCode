@@ -22,7 +22,7 @@ graph TB
         EP[entrypoint.sh]
         DS[docs-server.py :8080]
         OC[opencode web :5178]
-        FS["/root/labs/ filesystem"]
+        FS["$WODSTUDDIR/$NB_USER/opencodelab/labs/ filesystem"]
     end
 
     subgraph "External Services"
@@ -65,9 +65,9 @@ graph TB
         L4["Node.js 22 LTS<br/>via NodeSource"]
         L5["opencode-ai (npm -g)"]
         L6["NVIDIA SkillSpector<br/>/opt/SkillSpector/ or stub"]
-        L7["OpenCode config<br/>/root/.config/opencode/config.json"]
-        L8["Lab materials<br/>/root/labs/ (git init)"]
-        L9["Validation tests<br/>/root/tests/validate-env.sh"]
+        L7["OpenCode config<br/>$WODSTUDDIR/$NB_USER/opencodelab/.config/opencode/config.json"]
+        L8["Lab materials<br/>$WODSTUDDIR/$NB_USER/opencodelab/labs/ (git init)"]
+        L9["Validation tests<br/>$WODSTUDDIR/$NB_USER/opencodelab/tests/validate-env.sh"]
         L10["xdg-open stub<br/>/usr/bin/xdg-open (exit 0)"]
     end
 
@@ -131,7 +131,7 @@ sequenceDiagram
 
     Docker->>EP: ENTRYPOINT
     EP->>EP: Banner + GITHUB_TOKEN sed inject
-    Note over EP: sed replaces ${GITHUB_TOKEN}<br/>in /root/labs/opencode.json
+    Note over EP: sed replaces ${GITHUB_TOKEN}<br/>in $WODSTUDDIR/$NB_USER/opencodelab/labs/opencode.json
 
     EP->>DS: Start (background, :8080)
     DS-->>EP: Serving tutorial.html + /docs/
@@ -164,10 +164,10 @@ sequenceDiagram
 
 ### 3.2 Token Injection
 
-OpenCode does not resolve environment variables in its JSON config. The entrypoint uses `sed` to substitute `${GITHUB_TOKEN}` in `/root/labs/opencode.json` at runtime:
+OpenCode does not resolve environment variables in its JSON config. The entrypoint uses `sed` to substitute `${GITHUB_TOKEN}` in `$WODSTUDDIR/$NB_USER/opencodelab/labs/opencode.json` at runtime:
 
 ```bash
-sed -i "s|\${GITHUB_TOKEN}|${GITHUB_TOKEN}|g" /root/labs/opencode.json
+sed -i "s|\${GITHUB_TOKEN}|${GITHUB_TOKEN}|g" $WODSTUDDIR/$NB_USER/opencodelab/labs/opencode.json
 ```
 
 If no token is provided, the placeholder remains and only built-in Zen free models are available.
@@ -329,7 +329,7 @@ graph TB
 
     subgraph "docs-server.py (:8080)"
         TH["/ -> tutorial.html"]
-        MD["/docs/path -> /root/labs/path"]
+        MD["/docs/path -> $WODSTUDDIR/$NB_USER/opencodelab/labs/path"]
     end
 
     IFRAME -->|"direct connection"| OC["opencode web :5178"]
@@ -358,7 +358,7 @@ The "Web" sub-tab is selected by default. Each sub-tab loads a different markdow
 ```mermaid
 graph LR
     A["web.md / cli.md<br/>(raw markdown)"] -->|"fetch /docs/..."| B["docs-server.py<br/>(rewrites path)"]
-    B -->|"serves from /root/labs/"| C["tutorial.html<br/>(JavaScript)"]
+    B -->|"serves from $WODSTUDDIR/$NB_USER/opencodelab/labs/"| C["tutorial.html<br/>(JavaScript)"]
     C -->|"marked.parse()"| D["Rendered HTML<br/>(in #doc-content div)"]
 
     style B fill:#01A982,color:#fff
@@ -366,7 +366,7 @@ graph LR
 
 The docs-server.py is a minimal Python HTTP server (22 lines) that:
 - Serves `tutorial.html` at `/` and `/index.html`
-- Rewrites `/docs/path` to `/path` (relative to `/root/labs/`)
+- Rewrites `/docs/path` to `/path` (relative to `$WODSTUDDIR/$NB_USER/opencodelab/labs/`)
 - Lets the browser fetch lab markdown files via the `/docs/` prefix
 
 Markdown is rendered client-side using the `marked` library loaded from CDN.
@@ -382,12 +382,12 @@ The project has two OpenCode config files serving different purposes:
 ```mermaid
 graph LR
     subgraph "Global Config"
-        GC["config/opencode.json<br/>Copied to /root/.config/opencode/config.json"]
+        GC["config/opencode.json<br/>Copied to $WODSTUDDIR/$NB_USER/opencodelab/.config/opencode/config.json"]
         GC_CONTENT["model: opencode/mimo-v2.5-free<br/>instructions: INSTRUCTIONS.md"]
     end
 
     subgraph "Project Config"
-        PC["labs/opencode.json<br/>In /root/labs/ (project root)"]
+        PC["labs/opencode.json<br/>In $WODSTUDDIR/$NB_USER/opencodelab/labs/ (project root)"]
         PC_CONTENT["model: opencode/mimo-v2.5-free<br/>+ Copilot provider (optional)<br/>instructions: INSTRUCTIONS.md"]
     end
 
@@ -402,8 +402,8 @@ graph LR
 
 | Config | Path in Container | Contents |
 |--------|-------------------|----------|
-| Global | `/root/.config/opencode/config.json` | Minimal: model + instructions only |
-| Project | `/root/labs/opencode.json` | Model + instructions + optional Copilot provider |
+| Global | `$WODSTUDDIR/$NB_USER/opencodelab/.config/opencode/config.json` | Minimal: model + instructions only |
+| Project | `$WODSTUDDIR/$NB_USER/opencodelab/labs/opencode.json` | Model + instructions + optional Copilot provider |
 
 ### 7.2 Model Hierarchy
 
@@ -441,7 +441,7 @@ Skills live in `.opencode/skills/<name>/SKILL.md` relative to the project root. 
 ### 8.1 Filesystem Layout
 
 ```
-/root/labs/                          # Project root (git repo)
+$WODSTUDDIR/$NB_USER/opencodelab/labs/                          # Project root (git repo)
   opencode.json                      # Project-level OpenCode config
   INSTRUCTIONS.md                    # System prompt (lab tutor persona)
   README.md                          # Welcome page content

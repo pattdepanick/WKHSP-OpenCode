@@ -26,7 +26,7 @@ The Skills Registry at [www.skills.sh](https://www.skills.sh) is a public direct
 Ask OpenCode about it:
 
 ```bash
-cd /root/labs
+cd $WODSTUDDIR/$NB_USER/opencodelab/labs
 opencode
 ```
 
@@ -53,7 +53,7 @@ Exit OpenCode when done:
 The Skills CLI (`npx skills`) is the package manager for the ecosystem:
 
 ```bash
-cd /root/labs
+cd $WODSTUDDIR/$NB_USER/opencodelab/labs
 npx skills add https://github.com/vercel-labs/skills --skill find-skills --agent opencode -y
 ```
 

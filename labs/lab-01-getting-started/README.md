@@ -50,7 +50,7 @@ Ask the same question to compare responses.
 If you have terminal access to the container, you can also use OpenCode as a CLI:
 
 ```bash
-cd /root/labs
+cd $WODSTUDDIR/$NB_USER/opencodelab/labs
 opencode
 ```
 

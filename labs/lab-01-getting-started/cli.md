@@ -12,7 +12,7 @@ You need terminal access to the container. If you are using the Workshops-on-Dem
 ### 1. Launch OpenCode
 
 ```bash
-cd /root/labs
+cd $WODSTUDDIR/$NB_USER/opencodelab/labs
 opencode
 ```
 
