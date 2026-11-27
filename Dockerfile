@@ -39,11 +39,11 @@ RUN pip install --no-cache-dir "git+https://github.com/NVIDIA/SkillSpector.git@$
 
 # --- Configure OpenCode ---
 RUN mkdir -p $WODSTUDDIR/$NB_USER/opencodelab/labs/.opencode/skills && \
-    mkdir -p $WODSTUDDIR/$NB_USER/opencodelab/.opencode/skills && \
-    mkdir -p $WODSTUDDIR/$NB_USER/opencodelab/.config/opencode && \
+    mkdir -p $WODSTUDDIR/$NB_USER/.opencode/skills && \
+    mkdir -p $WODSTUDDIR/$NB_USER/.config/opencode && \
     mkdir -p $WODSTUDDIR/$NB_USER/opencodelab/recordings
 
-COPY config/opencode.json $WODSTUDDIR/$NB_USER/opencodelab/.config/opencode/config.json
+COPY config/opencode.json $WODSTUDDIR/$NB_USER/.config/opencode/config.json
 COPY config/INSTRUCTIONS.md $WODSTUDDIR/$NB_USER/opencodelab/labs/INSTRUCTIONS.md
 
 # --- Copy tutorial materials and tests ---

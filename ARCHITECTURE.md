@@ -65,7 +65,7 @@ graph TB
         L4["Node.js 22 LTS<br/>via NodeSource"]
         L5["opencode-ai (npm -g)"]
         L6["NVIDIA SkillSpector<br/>/opt/SkillSpector/ or stub"]
-        L7["OpenCode config<br/>$WODSTUDDIR/$NB_USER/opencodelab/.config/opencode/config.json"]
+        L7["OpenCode config<br/>$WODSTUDDIR/$NB_USER/.config/opencode/config.json"]
         L8["Lab materials<br/>$WODSTUDDIR/$NB_USER/opencodelab/labs/ (git init)"]
         L9["Validation tests<br/>$WODSTUDDIR/$NB_USER/opencodelab/tests/validate-env.sh"]
         L10["xdg-open stub<br/>/usr/bin/xdg-open (exit 0)"]
@@ -382,7 +382,7 @@ The project has two OpenCode config files serving different purposes:
 ```mermaid
 graph LR
     subgraph "Global Config"
-        GC["config/opencode.json<br/>Copied to $WODSTUDDIR/$NB_USER/opencodelab/.config/opencode/config.json"]
+        GC["config/opencode.json<br/>Copied to $WODSTUDDIR/$NB_USER/.config/opencode/config.json"]
         GC_CONTENT["model: opencode/mimo-v2.5-free<br/>instructions: INSTRUCTIONS.md"]
     end
 
@@ -402,7 +402,7 @@ graph LR
 
 | Config | Path in Container | Contents |
 |--------|-------------------|----------|
-| Global | `$WODSTUDDIR/$NB_USER/opencodelab/.config/opencode/config.json` | Minimal: model + instructions only |
+| Global | `$WODSTUDDIR/$NB_USER/.config/opencode/config.json` | Minimal: model + instructions only |
 | Project | `$WODSTUDDIR/$NB_USER/opencodelab/labs/opencode.json` | Model + instructions + optional Copilot provider |
 
 ### 7.2 Model Hierarchy

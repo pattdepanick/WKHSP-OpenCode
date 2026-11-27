@@ -70,7 +70,7 @@ fi
 
 section "OpenCode Configuration"
 
-CONFIG_FILE="$WODSTUDDIR/$NB_USER/opencodelab/.config/opencode/config.json"
+CONFIG_FILE="$WODSTUDDIR/$NB_USER/.config/opencode/config.json"
 if [ -f "$CONFIG_FILE" ]; then
     pass "OpenCode config exists"
     if jq -e '.provider.zen' "$CONFIG_FILE" > /dev/null 2>&1; then
